@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ecommerce test">
+<!--    <listeners>-->
+<!--        <listener class-name="utils.SuiteListners"/>-->
+<!--    </listeners>-->
+    <test verbose="2" preserve-order="true" name="Automate E-commerce website">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="org.qa.tests.CreateNewProfile"/>
+            <class name="org.qa.tests.LoginTest"/>
+            <class name="org.qa.tests.SearchProductTest"/>
+        </classes>
+    </test>
+</suite>
