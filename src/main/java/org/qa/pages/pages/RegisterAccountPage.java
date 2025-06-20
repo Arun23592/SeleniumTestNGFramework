@@ -5,7 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class RegisterAccountPage extends BasePage{
 
-    private final By firstName = By.id("input-firstname");
+    private final By firstName = By.id("input-firstname"); //
     private final By lastName = By.id("input-lastname");
     private final By email = By.id("input-email");
     private final By phone = By.id("input-telephone");
