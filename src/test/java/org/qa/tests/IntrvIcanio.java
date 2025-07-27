@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 public class IntrvIcanio {
 
@@ -36,7 +37,7 @@ public class IntrvIcanio {
         driver.manage().window().maximize();
     }
 
-    @Test(priority = 2)
+    @Test(invocationCount = 5, threadPoolSize = 2)
     public void productSearch(){
         WebElement serchbox = driver.findElement(By.id("twotabsearchtextbox"));
         serchbox.sendKeys("laptop");
@@ -92,5 +93,24 @@ public class IntrvIcanio {
             System.out.println("No products found below ₹32,000.");
         }
 
+    }
+
+
+    public void windowHandes(){
+        WebElement newTabBtn = driver.findElement(By.id("tabButton"));
+
+        String mainWIndow = driver.getWindowHandle();
+
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for(String childwindow : allWindows){
+            if (!mainWIndow.equalsIgnoreCase(childwindow)){
+                driver.switchTo().window(childwindow);
+                System.out.println("Switched to new Window: "+driver.getTitle());
+                driver.close();
+            }
+        }
+
+        driver.switchTo().window(mainWIndow);
     }
 }
