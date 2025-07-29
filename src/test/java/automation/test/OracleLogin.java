@@ -34,7 +34,7 @@ public class OracleLogin {
 
         Select langSelect = new Select(selectLanguagedropDown);
         langSelect.selectByVisibleText("English");
-
+        //click on login button
         WebElement logInButton = driver.findElement(By.id("btnActive"));
         logInButton.click();
 
