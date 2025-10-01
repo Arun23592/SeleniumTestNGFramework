@@ -1,7 +1,8 @@
 package automation.test;
 
+
+import com.github.dockerjava.transport.DockerHttpClient;
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -13,7 +14,7 @@ public class FileUploadUsingAPI {
         RestAssured.useRelaxedHTTPSValidation();
 
         File zipfile = new File("FileUpload/DatabaseTestingAutomation.zip");
-      Response response =  RestAssured
+      DockerHttpClient.Response response = (DockerHttpClient.Response) RestAssured
                 .given()
                     .multiPart("file", zipfile, "application/zip")   // form field 'file' or as per API spec
                     .contentType("multipart/form-data")
@@ -24,7 +25,7 @@ public class FileUploadUsingAPI {
                     .statusCode(200)
                     .extract().response();
 
-        System.out.println("Upload Responses: "+ response.asString());
+        System.out.println("Upload Responses: "+ response.toString());
 
     }
 }
