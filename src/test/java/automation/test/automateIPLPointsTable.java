@@ -20,7 +20,7 @@ public class automateIPLPointsTable {
 
         System.out.println("Teams with NRR between 0 and 1");
         for (WebElement row : rows){
-            List<WebElement> columns = row.findElements(By.xpath("//h2[@class='ih-pt-cont mb-0 ng-binding']"));
+            List<WebElement> columns = row.findElements(By.tagName("td"));
                 if(columns.size() >= 8){
                     System.out.println("Raw team name cell text: " + columns.get(1).getText());
                     // Assuming the team name is in the first column and NRR is in the 8th column
@@ -31,6 +31,10 @@ public class automateIPLPointsTable {
 
                     String teamName = columns.get(0).getText().replace("\\s+", " ").trim();
                     String nrrText = columns.get(7).getText().trim();
+                    if (nrrText.isEmpty()) {
+                        System.out.println("NRR value is missing for team: " + teamName);
+                        continue;
+                    }
                     try {
                         double nrr = Double.parseDouble(nrrText);
                         if (nrr > 0 && nrr < 1){
