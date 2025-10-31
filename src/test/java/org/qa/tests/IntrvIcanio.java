@@ -37,7 +37,7 @@ public class IntrvIcanio {
         driver.manage().window().maximize();
     }
 
-    @Test(invocationCount = 5, threadPoolSize = 2)
+    @Test(priority = 2)
     public void productSearch(){
         WebElement serchbox = driver.findElement(By.id("twotabsearchtextbox"));
         serchbox.sendKeys("laptop");
@@ -84,10 +84,13 @@ public class IntrvIcanio {
             for (WebElement prod : prodList) {
                 // Find the corresponding product title element
                 WebElement parent = prod.findElement(By.xpath("./ancestor::div[@class='sg-col-inner']"));
-                WebElement titleElement = parent.findElement(By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']"));
+                List<WebElement> titleElement = parent.findElements(By.xpath("//h2[@class='a-size-medium a-spacing-none a-color-base a-text-normal']"));
+                    for (WebElement title : titleElement){
+                        String productTitle = title.getText();
+                        System.out.println(productTitle + " - ₹" + prod.getText());
+                    }
+//                String productTitle = titleElement
 
-                String productTitle = titleElement.getText();
-                System.out.println(productTitle + " - ₹" + prod.getText());
             }
         } else {
             System.out.println("No products found below ₹32,000.");
