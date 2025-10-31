@@ -29,6 +29,6 @@ public class DatePicker {
 
     @Test
     public void DatePickerCalender(){
-    driver.findElement(By.cssSelector(".    react-date-picker__inputGroup")).click();
+    driver.findElement(By.cssSelector(".react-date-picker__inputGroup")).click();
     }
 }
