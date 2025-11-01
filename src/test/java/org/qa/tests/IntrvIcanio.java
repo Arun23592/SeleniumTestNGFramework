@@ -99,6 +99,7 @@ public class IntrvIcanio {
     }
 
 
+    @Test
     public void windowHandes(){
         WebElement newTabBtn = driver.findElement(By.id("tabButton"));
 
