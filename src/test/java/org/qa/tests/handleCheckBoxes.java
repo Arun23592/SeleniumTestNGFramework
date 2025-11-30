@@ -26,7 +26,7 @@ public class handleCheckBoxes {
         WebElement DaysCheckBox = driver.findElement(By.xpath("(//input[@class='form-check-input' and @type='checkbox'])[1]"));
 
         //Actions
-
+        deselectCheckBox(DaysCheckBox);
         selectCheckBox(DaysCheckBox);
 
         //Validate they are selected
