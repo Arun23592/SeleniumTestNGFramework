@@ -68,6 +68,5 @@ public class MatchLinksBetweenWindows {
         //6. Close the child window and return to parent
         driver.close();
         driver.switchTo().window(mainWindow);
-
     }
 }
