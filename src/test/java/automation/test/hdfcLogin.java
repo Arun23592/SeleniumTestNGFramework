@@ -47,6 +47,7 @@ public class hdfcLogin {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //1.	Open HDFC Bank website
+        System.out.println("STEP 1: Launching HDFC Bank website");
         driver.get("https://www.hdfcbank.com");
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -56,13 +57,9 @@ public class hdfcLogin {
     @Test
     public void LoginHDFC(){
 
-//        try{
-//            driver.findElement(By.xpath("//div[@class='popup-close']")).click();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
 
         //2. Mouse hover on Login
+        System.out.println("STEP 2: Clicking on Login button");
         WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='Login']")));
         Actions actions = new Actions(driver);
         actions.moveToElement(loginBtn).perform();
@@ -76,19 +73,26 @@ public class hdfcLogin {
 
 
         //wait for dropdown container
+        System.out.println("Login dropdown should now be visible");
 
-        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'login_dropdown') and contains(@class,'show')])[last()]")));
+        System.out.println("STEP 3: Waiting for login dropdown container");
+        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='login-ddwrap show']")));
 
-        Actions actions1 = new Actions(driver);
-        actions1.moveToElement(dropdown).perform();
+//        Actions actions1 = new Actions(driver);
+//        actions1.moveToElement(dropdown).perform();
 
         //4. Click on Know More
-        WebElement knowMore = driver.findElement(By.xpath("(//div[@class='reg-know-btn']//a[@href='/stay-secure/verified-by-visa-mastercard-securecode'])[last()]"));
-        js.executeScript("arguments[0].scrollIntoView(true);", knowMore);
+        System.out.println("STEP 4: Locating 'Know more' under Credit Card Portal");
+        WebElement knowMore = dropdown.findElement(By.xpath("(//a[@title='Know more'][normalize-space()='Know more'])[3]"));
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", knowMore);
+        System.out.println("STEP 5: Scrolling into view");
+
+
+        System.out.println("STEP 6: Clicking on 'Know more'");
 
         wait.until(ExpectedConditions.elementToBeClickable(knowMore)).click();
 
-
+        System.out.println("'Know more' clicked successfully");
 
     }
 
