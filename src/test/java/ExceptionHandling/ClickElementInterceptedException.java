@@ -34,6 +34,7 @@ public class ClickElementInterceptedException {
             driver.findElement(By.id("accept-cookies")).click();
         }catch (NoSuchElementException ignored){
             //No banner present - continue
+
         }
     }
 
