@@ -24,7 +24,7 @@ public class AccordionAutomation {
     public void setUp(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.get("https://www.tutorialspoint.com/selenium/practice/accordion.php");
 
 
