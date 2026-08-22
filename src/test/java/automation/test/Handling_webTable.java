@@ -3,13 +3,15 @@ package automation.test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class Handling_webTable {
 
-    WebDriver driver;
+    private static WebDriver driver;
+    private static WebDriverWait wait;
     public void setUp(){
 
         driver = new ChromeDriver();
@@ -21,6 +23,7 @@ public class Handling_webTable {
 
     @Test
     public void handleWebTable(){
+
 
 
 
